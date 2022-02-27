@@ -1,0 +1,14 @@
+
+module my-snapd 1.0;
+
+require {
+	type httpd_config_t;
+	type hostname_exec_t;
+	type snappy_t;
+	class file { execute execute_no_trans getattr open read };
+	class dir search;
+}
+
+#============= snappy_t ==============
+allow snappy_t hostname_exec_t:file { execute execute_no_trans getattr open read };
+allow snappy_t httpd_config_t:dir search;
